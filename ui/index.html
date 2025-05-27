@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWE Electronics Store - GUI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>AWE Electronics Store</h1>
+    </header>
+
+    <main class="container">
+        <section id="catalogue-view">
+            <h2>🛍️ Product Catalogue</h2>
+            <div id="product-list" class="product-grid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="cart-view">
+            <h2>🛒 Shopping Cart</h2>
+            <div id="cart-items">
+                <!-- Cart items will be loaded here -->
+                <p id="empty-cart-message">Your cart is empty.</p>
+            </div>
+            <div id="cart-summary">
+                <h3>Cart Total: $<span id="cart-total">0.00</span></h3>
+                <button id="checkout-button" class="btn btn-primary" disabled>Proceed to Checkout</button>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="confirmation-view" class="hidden">
+            <h2>✅ Order Confirmation</h2>
+            <div id="order-details">
+                <p><strong>Order ID:</strong> <span id="conf-order-id"></span></p>
+                <p><strong>Status:</strong> <span id="conf-order-status"></span></p>
+                <p><strong>Total Amount:</strong> $<span id="conf-order-total"></span></p>
+                <p><strong>Items:</strong></p>
+                <ul id="conf-order-items"></ul>
+                <p><strong>Payment Status:</strong> <span id="conf-payment-status"></span></p>
+                <p><strong>Shipment Tracking:</strong> <span id="conf-shipment-tracking"></span></p>
+                <p>Thank you for your purchase!</p>
+            </div>
+            <button id="new-order-button" class="btn">Start New Order</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AWE Electronics Store</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html> 

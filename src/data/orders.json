@@ -1,0 +1,119 @@
+[
+  {
+    "id": "c97d1851-3ec6-4ecb-8ae4-8f6d376f7312",
+    "customer": {
+      "email": "test@example.com",
+      "id": "cust123"
+    },
+    "items": [
+      {
+        "product": {
+          "id": "p002",
+          "name": "Gaming Mouse",
+          "price": 29.99,
+          "stock": 25,
+          "category": "Accessories"
+        },
+        "quantity": 5
+      }
+    ],
+    "total": "149.95",
+    "payment": {
+      "success": true,
+      "transactionId": "7a23aa11-7845-4db0-a905-0f705a626e44",
+      "message": "Payment successful.",
+      "timestamp": "2025-05-27T12:32:38.407Z"
+    },
+    "shipment": {
+      "trackingId": "102e231b-c1e2-4c67-8cc7-751dbac8af32",
+      "status": "created",
+      "estimatedDelivery": "2025-06-01",
+      "courier": "AustExpress",
+      "orderId": "c97d1851-3ec6-4ecb-8ae4-8f6d376f7312"
+    },
+    "invoice": {
+      "invoiceId": "1748349158413",
+      "timestamp": "2025-05-27T12:32:38.413Z",
+      "items": [
+        {
+          "productId": "p002",
+          "name": "Gaming Mouse",
+          "quantity": 5,
+          "pricePerUnit": 29.99,
+          "lineTotal": "149.95"
+        }
+      ],
+      "total": "149.95",
+      "orderId": "c97d1851-3ec6-4ecb-8ae4-8f6d376f7312",
+      "customerEmail": "test@example.com"
+    },
+    "status": "confirmed"
+  },
+  {
+    "id": "ecc87c78-2aa0-47bb-b500-a40ea68ae314",
+    "customer": {
+      "email": "test@example.com",
+      "id": "cust123"
+    },
+    "items": [
+      {
+        "product": {
+          "id": "p003",
+          "name": "HD Monitor",
+          "price": 199.99,
+          "stock": 3,
+          "category": "Displays"
+        },
+        "quantity": 7
+      },
+      {
+        "product": {
+          "id": "p002",
+          "name": "Gaming Mouse",
+          "price": 29.99,
+          "stock": 28,
+          "category": "Accessories"
+        },
+        "quantity": 2
+      }
+    ],
+    "total": "1459.91",
+    "payment": {
+      "success": true,
+      "transactionId": "4ae2f325-bfdb-49f9-8ac3-eabc0ae429aa",
+      "message": "Payment successful.",
+      "timestamp": "2025-05-27T12:40:03.691Z"
+    },
+    "shipment": {
+      "trackingId": "e3d4da0a-aa7c-4af9-b6ae-421ae8126f64",
+      "status": "created",
+      "estimatedDelivery": "2025-06-01",
+      "courier": "AustExpress",
+      "orderId": "ecc87c78-2aa0-47bb-b500-a40ea68ae314"
+    },
+    "invoice": {
+      "invoiceId": "1748349603694",
+      "timestamp": "2025-05-27T12:40:03.694Z",
+      "items": [
+        {
+          "productId": "p003",
+          "name": "HD Monitor",
+          "quantity": 7,
+          "pricePerUnit": 199.99,
+          "lineTotal": "1399.93"
+        },
+        {
+          "productId": "p002",
+          "name": "Gaming Mouse",
+          "quantity": 2,
+          "pricePerUnit": 29.99,
+          "lineTotal": "59.98"
+        }
+      ],
+      "total": "1459.91",
+      "orderId": "ecc87c78-2aa0-47bb-b500-a40ea68ae314",
+      "customerEmail": "test@example.com"
+    },
+    "status": "confirmed"
+  }
+]

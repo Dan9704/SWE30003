@@ -1,0 +1,37 @@
+[
+  {
+    "id": "p001",
+    "name": "Wireless Keyboard",
+    "price": 49.99,
+    "stock": 15,
+    "category": "Accessories"
+  },
+  {
+    "id": "p002",
+    "name": "Gaming Mouse",
+    "price": 29.99,
+    "stock": 30,
+    "category": "Accessories"
+  },
+  {
+    "id": "p003",
+    "name": "HD Monitor",
+    "price": 199.99,
+    "stock": 10,
+    "category": "Displays"
+  },
+  {
+    "id": "p004",
+    "name": "USB-C Hub",
+    "price": 34.95,
+    "stock": 20,
+    "category": "Adapters"
+  },
+  {
+    "id": "p005",
+    "name": "Laptop Stand",
+    "price": 59.00,
+    "stock": 25,
+    "category": "Accessories"
+  }
+] 
