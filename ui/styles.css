@@ -187,3 +187,108 @@ footer {
         padding: 8px 12px;
     }
 } 
+
+.admin-login-link {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.admin-login-link a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.admin-login-link a:hover {
+    background-color: #fff;
+    color: #333;
+}
+
+#admin-login-view form div {
+    margin-bottom: 10px;
+}
+
+#admin-login-view label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#admin-login-view input[type="text"],
+#admin-login-view input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-sizing: border-box; /* Ensures padding doesn't expand width */
+}
+
+#admin-login-view .btn {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+#admin-view {
+    /* Styles for the admin dashboard */
+}
+
+#admin-view .btn {
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+
+.report-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    font-family: monospace; /* Good for pre-formatted text feel */
+    white-space: pre-wrap; /* To respect newlines and spaces from JS string */
+    line-height: 1.5;
+}
+
+.report-container h3 {
+    margin-top: 0;
+    color: #007bff;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.report-container p {
+    margin-bottom: 8px;
+}
+
+.report-container ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.report-container li {
+    margin-bottom: 4px;
+}
+
+/* Responsive adjustments for admin login link */
+@media (max-width: 768px) {
+    .admin-login-link {
+        position: static;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: -10px; /* Adjust spacing if header padding is large */
+    }
+    #admin-login-view input[type="text"],
+    #admin-login-view input[type="password"] {
+        width: calc(100% - 16px); /* Adjust for padding if box-sizing fails in some context */
+    }
+}
