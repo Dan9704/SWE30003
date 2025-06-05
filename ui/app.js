@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Product Loading & Rendering (existing code from previous step, slightly adapted if needed) ---
     async function fetchProducts() {
         try {
-            const response = await fetch('../src/data/products.json'); 
+            const response = await fetch('/api/products'); 
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             products = await response.json();
             renderProducts();
@@ -308,13 +308,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Sales Report Logic ---
     async function fetchOrders() {
         try {
-            const response = await fetch('../src/data/orders.json');
+            const response = await fetch('/api/orders');
             if (!response.ok) {
-                // If orders.json doesn't exist, it's not an error for reporting, just means no data.
-                if (response.status === 404) return []; 
+                if (response.status === 404) return [];
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            return await response.json();
+            const result = await response.json();
+            return result.data || [];
         } catch (error) {
             console.error('Error fetching orders:', error);
             showToast('Could not load order data for report.', 4000);
