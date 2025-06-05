@@ -33,5 +33,26 @@
     "price": 59.00,
     "stock": 25,
     "category": "Accessories"
+  },
+  {
+    "id": "p006",
+    "name": "Mechanical Keyboard",
+    "price": 24.99,
+    "stock": 40,
+    "category": "Accessories"
+  },
+  {
+    "id": "p007",
+    "name": "1080p HD Webcam",
+    "price": 89.99,
+    "stock": 18,
+    "category": "Cameras"
+  },
+  {
+    "id": "p008",
+    "name": "Portable 1TB SSD",
+    "price": 129.99,
+    "stock": 12,
+    "category": "Storage"
   }
 ] 

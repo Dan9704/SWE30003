@@ -3,13 +3,13 @@ import { generateUUID } from '../utils/idGenerator.js';
 export class Order {
   constructor(cart, customer) {
     this.id = generateUUID();
-    this.customer = customer; // Simplified: { email: "test@example.com" }
+    this.customer = customer;
     this.items = [...cart.listItems()]; // Deep copy or ensure OrderItem is immutable if needed
     this.total = cart.getTotal();
-    this.payment = null; // To be filled by PaymentProcessor
-    this.shipment = null; // To be filled by Shipment module
-    this.invoice = null; // To be filled by Invoice module
-    this.status = 'pending'; // e.g., pending, confirmed, failed
+    this.payment = null;
+    this.shipment = null;
+    this.invoice = null;
+    this.status = 'pending';
   }
 
   // Method to set payment details

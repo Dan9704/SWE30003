@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let cart = []; 
     let isAdminLoggedIn = false;
 
-    // --- Utility Functions ---
+    // Utility Functions
     function showToast(message, duration = 3000) {
         const toast = document.createElement('div');
         toast.className = 'toast-notification';
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkoutConfirmationSeparator.classList.remove('hidden');
     }
 
-    // --- Product Loading & Rendering (existing code from previous step, slightly adapted if needed) ---
+    // Product Loading & Rendering
     async function fetchProducts() {
         try {
             const response = await fetch('/api/products'); 
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.add-to-cart-btn').forEach(button => button.addEventListener('click', handleAddToCart));
     }
 
-    // --- Cart Management (existing code from previous step, slightly adapted if needed) ---
+    // Cart Management
     function handleAddToCart(event) {
         const productId = event.target.dataset.productId;
         const product = products.find(p => p.id === productId);
@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cartTotalElement.textContent = total.toFixed(2);
     }
 
-    // --- Checkout & Confirmation (existing code, adapted for view switching) ---
+    // Checkout & Confirmation
     checkoutButton.addEventListener('click', () => {
         if (cart.length === 0) {
             showToast('Your cart is empty.');
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showMainCustomerView();
     });
 
-    // --- Admin Login Logic ---
+    // Admin Login
     showAdminLoginLink.addEventListener('click', (e) => {
         e.preventDefault();
         showAdminLoginView();
@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast('Admin logged out.');
     });
 
-    // --- Sales Report Logic ---
+    // Sales Report
     async function fetchOrders() {
         try {
             const response = await fetch('/api/orders');
@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderSalesReport(reportData) {
-        salesReportContentElement.innerHTML = ''; // Clear previous
+        salesReportContentElement.innerHTML = '';
         const { totalRevenue, orderCount, topProducts, salesByDay, rawOrderCount, confirmedOrderCount } = reportData;
 
         if (rawOrderCount === 0) {
@@ -402,8 +402,8 @@ document.addEventListener('DOMContentLoaded', () => {
         renderSalesReport(reportData);
     });
 
-    // --- Initial Load & View Setup ---
-    showMainCustomerView(); // Start with customer view
+    // Initial Load & View Setup
+    showMainCustomerView();
     fetchProducts();
     renderCart(); 
 }); 

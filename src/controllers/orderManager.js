@@ -72,9 +72,6 @@ export class OrderManager {
       const productInCatalogue = this.catalogue.products.find(p => p.id === item.product.id);
       if (productInCatalogue) {
         productInCatalogue.stock -= item.quantity;
-        // Note: In a real app, you'd persist catalogue changes too.
-        // For this PRD, catalogue.js doesn't have a saveProducts method.
-        // We are modifying the in-memory catalogue instance.
       }
     });
   }

@@ -2,9 +2,9 @@ import { generateTimestampId } from '../utils/idGenerator.js';
 
 export class Invoice {
   constructor(order) {
-    this.invoiceId = generateTimestampId(); // Using timestamp for invoice ID as per PRD
+    this.invoiceId = generateTimestampId();  // Using timestamp for invoice ID as per PRD
     this.timestamp = new Date().toISOString();
-    this.items = order.items.map(item => ({ // Store a snapshot of item details for the invoice
+    this.items = order.items.map(item => ({  // Store a snapshot of item details for the invoice
       productId: item.product.id,
       name: item.product.name,
       quantity: item.quantity,
