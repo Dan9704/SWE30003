@@ -1,3 +1,2 @@
 // main.js
-import { bootstrap } from './cli/bootstrap.js';
-bootstrap(); 
+// To start the application, open ui/index.html in a web browser. 

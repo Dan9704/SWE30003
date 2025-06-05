@@ -1,11 +1,12 @@
-# AWE Electronics Store - CLI Application
+# AWE Electronics Store - Web Application
 
-This project is a command-line interface (CLI) application simulating a simple online electronics store. It allows users to browse products, manage a shopping cart, place orders, and generate sales reports.
+This project is a web application simulating a simple online electronics store. It allows users to browse products, manage a shopping cart, place orders, and generate sales reports.
 
 ## Prerequisites
 
 *   Node.js (version 18.x or higher recommended, as per project setup using ES Modules)
 *   npm (Node Package Manager, typically comes with Node.js)
+*   A modern web browser
 
 ## Setup & Installation
 
@@ -14,38 +15,32 @@ This project is a command-line interface (CLI) application simulating a simple o
     ```bash
     cd path/to/awe-electronics-store
     ```
-3.  **Install Dependencies**: Run the following command to install the necessary dependencies (e.g., `inquirer`):
+3.  **Install Dependencies**: Run the following command to install the necessary dependencies:
     ```bash
     npm install
     ```
 
 ## Running the Application
 
-To start the application, run the following command from the project's root directory:
-
-```bash
-node src/main.js
-```
-
-This will launch the interactive CLI menu.
+To start the application, simply open the `ui/index.html` file in your web browser.
 
 ## Features
 
 *   **Product Catalogue**: View all available products, search by name, and filter by category.
 *   **Shopping Cart**: Add products to a cart, view cart contents, update item quantities, and remove items.
 *   **Order Management**: Checkout items from the cart, simulate payment processing (with a chance of failure and one retry), update product stock, and generate order confirmations including invoice and shipment details.
-*   **Sales Reporting**: Generate aggregated sales reports from historical order data, including total revenue, order count, top-selling products, and daily sales breakdowns. Reports can be viewed in the console and optionally exported to a text file.
+*   **Sales Reporting**: Generate aggregated sales reports from historical order data, including total revenue, order count, top-selling products, and daily sales breakdowns. Reports can be viewed in the web interface and optionally exported to a text file.
 
 ## Project Structure Overview
 
 *   `src/`: Contains the core application logic.
-    *   `cli/`: Handles command-line user interactions (e.g., `bootstrap.js`, `catalogueUI.js`).
     *   `controllers/`: Functional classes orchestrating business logic (e.g., `cartManager.js`, `orderManager.js`).
     *   `data/`: Stores JSON files for persistence (e.g., `products.json`, `orders.json`).
     *   `models/`: Data-holder classes (e.g., `product.js`, `orderItem.js`, `order.js`).
     *   `services/`: Business logic services (e.g., `catalogue.js`, `paymentProcessor.js`, `salesReport.js`).
     *   `utils/`: Utility functions (e.g., `idGenerator.js`).
     *   `main.js`: The main entry point for the application.
+*   `ui/`: Contains the web interface files (HTML, CSS, JavaScript).
 *   `reports/`: Default directory for exported sales reports (created if a report is exported).
 *   `package.json`: Lists project dependencies and scripts.
 *   `.eslintrc.json` / `eslint.config.js`: ESLint configuration.
