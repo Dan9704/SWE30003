@@ -16,15 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const confShipmentTracking = document.getElementById('conf-shipment-tracking');
     const newOrderButton = document.getElementById('new-order-button');
 
-
     const checkoutView = document.getElementById('checkout-view');
     const checkoutForm = document.getElementById('checkout-form');
     const shippingAddressInput = document.getElementById('shipping-address');
     const paymentMethodInput = document.getElementById('payment-method');
     const cancelCheckoutButton = document.getElementById('cancel-checkout');
-
-
-
 
     // Admin view elements
     const showAdminLoginLink = document.getElementById('show-admin-login-link');
@@ -85,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkoutConfirmationSeparator.classList.add('hidden');
         
         adminLoginView.classList.remove('hidden');
-        usernameInput.value = 'admin'; // Pre-fill for convenience
+        usernameInput.value = 'admin';
         passwordInput.value = 'password';
         adminLoginError.style.display = 'none';
     }
@@ -99,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkoutConfirmationSeparator.classList.add('hidden');
 
         adminView.classList.remove('hidden');
-        cartAdminSeparator.classList.remove('hidden'); // Show separator above admin view
+        cartAdminSeparator.classList.remove('hidden');
         salesReportContentElement.innerHTML = '<p>Click the button above to generate the sales report.</p>';
     }
     
@@ -196,7 +192,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 tr.innerHTML = `
                     <td>${item.product.name}</td>
                     <td>$${item.product.price.toFixed(2)}</td>
-                    <td><input type="number" class="cart-item-qty" value="${item.quantity}" min="1" max="${currentStock}" data-product-id="${item.product.id}"></td>
+                    <td>
+                        <div class="quantity-control">
+                            <button class="btn btn-sm quantity-btn minus" data-product-id="${item.product.id}">-</button>
+                            <input type="number" class="cart-item-qty" value="${item.quantity}" min="1" max="${currentStock}" data-product-id="${item.product.id}" readonly>
+                            <button class="btn btn-sm quantity-btn plus" data-product-id="${item.product.id}">+</button>
+                        </div>
+                    </td>
                     <td>$${(item.product.price * item.quantity).toFixed(2)}</td>
                     <td><button class="btn btn-danger remove-from-cart-btn" data-product-id="${item.product.id}">Remove</button></td>
                 `;
@@ -206,31 +208,31 @@ document.addEventListener('DOMContentLoaded', () => {
             checkoutButton.disabled = false;
         }
         updateCartTotal();
-        document.querySelectorAll('.cart-item-qty').forEach(input => input.addEventListener('change', handleUpdateQuantity));
+        document.querySelectorAll('.quantity-btn').forEach(button => {
+            button.addEventListener('click', handleQuantityButtonClick);
+        });
         document.querySelectorAll('.remove-from-cart-btn').forEach(button => button.addEventListener('click', handleRemoveFromCart));
     }
 
-    function handleUpdateQuantity(event) {
+    function handleQuantityButtonClick(event) {
         const productId = event.target.dataset.productId;
-        let newQuantity = parseInt(event.target.value);
-        const cartItem = cart.find(item => item.product.id === productId);
-        const productInCatalogue = products.find(p => p.id === productId);
-        const stock = productInCatalogue ? productInCatalogue.stock : 0;
-
-        if (cartItem) {
-            if (newQuantity <= 0) {
-                newQuantity = 1; 
-                event.target.value = 1; 
-                showToast('Quantity must be at least 1. Use Remove button to delete.');
+        const input = document.querySelector(`.cart-item-qty[data-product-id="${productId}"]`);
+        const currentValue = parseInt(input.value);
+        const isPlus = event.target.classList.contains('plus');
+        const newValue = isPlus ? currentValue + 1 : currentValue - 1;
+        
+        if (newValue >= 1 && newValue <= parseInt(input.max)) {
+            input.value = newValue;
+            const cartItem = cart.find(item => item.product.id === productId);
+            if (cartItem) {
+                cartItem.quantity = newValue;
+                showToast(`${cartItem.product.name} quantity updated.`);
+                renderCart();
             }
-            if (newQuantity > stock) {
-                newQuantity = stock;
-                event.target.value = stock;
-                showToast(`Cannot exceed available stock (${stock}) for ${cartItem.product.name}.`);
-            }
-            cartItem.quantity = newQuantity;
-            showToast(`${cartItem.product.name} quantity updated.`);
-            renderCart(); 
+        } else if (newValue < 1) {
+            showToast('Quantity must be at least 1. Use Remove button to delete.');
+        } else {
+            showToast(`Cannot exceed available stock (${input.max}) for ${cart.find(item => item.product.id === productId).product.name}.`);
         }
     }
 

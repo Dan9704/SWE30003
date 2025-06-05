@@ -121,6 +121,7 @@ h2, h3 {
 #cart-items input[type="number"] {
     width: 60px;
     padding: 5px;
+    text-align: center;
 }
 
 #cart-summary {
@@ -599,4 +600,31 @@ footer {
     .item-price-details {
         text-align: left;
     }
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity-btn {
+    padding: 5px 10px;
+    font-size: 0.9em;
+    background: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.quantity-btn:hover {
+    background: #e0e0e0;
+}
+
+.quantity-btn:active {
+    background: #d0d0d0;
+}
+
+.btn-sm {
+    padding: 4px 8px;
+    font-size: 0.8em;
 }
