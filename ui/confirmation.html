@@ -49,27 +49,23 @@
     </footer>
 
     <script>
-        // Get order data from localStorage
-        const data = JSON.parse(localStorage.getItem("checkoutInfo") || "{}");
-        const orderCartData = JSON.parse(localStorage.getItem("orderCartData") || "{}");
+        const checkoutInfo = JSON.parse(localStorage.getItem('checkoutInfo') || '{}');
+        const orderCartData = JSON.parse(localStorage.getItem('orderCartData') || '{}');
 
-        // Set order details
-        document.getElementById("orderId").textContent = "AWE-" + Date.now();
-        document.getElementById("name").textContent = data?.name || "N/A";
-        document.getElementById("address").textContent = data?.address || "N/A";
-        document.getElementById("email").textContent = data?.email || "N/A";
-        document.getElementById("paymentMethod").textContent = data?.paymentMethod || "N/A";
-        document.getElementById("orderStatus").textContent = "Confirmed";
-        document.getElementById("totalAmount").textContent = orderCartData?.total?.toFixed(2) || "0.00";
+        document.getElementById('orderId').textContent = checkoutInfo.orderId || 'N/A';
+        document.getElementById('orderStatus').textContent = checkoutInfo.status || 'Confirmed';
+        document.getElementById('name').textContent = checkoutInfo.name || 'N/A';
+        document.getElementById('address').textContent = checkoutInfo.address || 'N/A';
+        document.getElementById('email').textContent = checkoutInfo.email || 'N/A';
+        document.getElementById('paymentMethod').textContent = checkoutInfo.paymentMethod || 'N/A';
+        document.getElementById('totalAmount').textContent = orderCartData.total ? orderCartData.total.toFixed(2) : '0.00';
 
-        // Display order items
-        const orderItemsContainer = document.getElementById("orderItems");
-        if (orderCartData?.items && orderCartData.items.length > 0) {
-            const itemsList = document.createElement("ul");
-            itemsList.className = "order-items-list";
-            
+        const orderItemsContainer = document.getElementById('orderItems');
+        if (orderCartData.items && orderCartData.items.length > 0) {
+            const itemsList = document.createElement('ul');
+            itemsList.className = 'order-items-list';
             orderCartData.items.forEach(item => {
-                const listItem = document.createElement("li");
+                const listItem = document.createElement('li');
                 listItem.innerHTML = `
                     <div class="item-details">
                         <span class="item-name">${item.name}</span>
@@ -82,18 +78,17 @@
                 `;
                 itemsList.appendChild(listItem);
             });
-            
+            orderItemsContainer.innerHTML = '';
             orderItemsContainer.appendChild(itemsList);
         } else {
             orderItemsContainer.innerHTML = "<p class='no-items'>No items in order</p>";
         }
 
         function startNewOrder() {
-            // Clear only the cart and checkout data, keep other data if needed
-            localStorage.removeItem("cartData");
-            localStorage.removeItem("checkoutInfo");
-            localStorage.removeItem("orderCartData");
-            window.location.href = "index.html";
+            localStorage.removeItem('cartData');
+            localStorage.removeItem('checkoutInfo');
+            localStorage.removeItem('orderCartData');
+            window.location.href = 'index.html';
         }
     </script>
 </body>

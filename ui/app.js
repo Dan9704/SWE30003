@@ -262,22 +262,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
         }
-        const mockOrderId = `AWE-GUI-${Date.now()}`;
-        cart.forEach(cartItem => {
-            const productInStore = products.find(p => p.id === cartItem.product.id);
-            if (productInStore) productInStore.stock -= cartItem.quantity;
-        });
-        renderProducts();
-        confOrderId.textContent = mockOrderId;
-        confOrderStatus.textContent = 'Confirmed (Simulated)';
-        confOrderTotal.textContent = cartTotalElement.textContent;
-        confOrderItems.innerHTML = cart.map(item => `<li>${item.product.name} x${item.quantity}</li>`).join('');
-        confPaymentStatus.textContent = 'Payment Successful (Simulated)';
-        confShipmentTracking.textContent = `TRK-GUI-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
-        showConfirmationView();
-        showToast('Order placed successfully!');
-        cart = []; 
-        renderCart(); 
+        // Store cart data for checkout page
+        localStorage.setItem('cartData', JSON.stringify(cart));
+        window.location.href = 'checkout.html';
     });
 
     newOrderButton.addEventListener('click', () => {
