@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWE Electronics Store - Order Confirmation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>AWE Electronics Store</h1>
+    </header>
+
+    <main class="container">
+        <section id="confirmation-view">
+            <h2>✅ Order Confirmation</h2>
+            <div id="confirmationBox">
+                <div class="order-header">
+                    <p><strong>Order ID:</strong> <span id="orderId"></span></p>
+                    <p><strong>Status:</strong> <span id="orderStatus"></span></p>
+                </div>
+
+                <div class="customer-details">
+                    <h3><i class="fas fa-user"></i> Customer Details</h3>
+                    <p><strong>Name:</strong> <span id="name"></span></p>
+                    <p><strong>Address:</strong> <span id="address"></span></p>
+                    <p><strong>Email:</strong> <span id="email"></span></p>
+                    <p><strong>Payment Method:</strong> <span id="paymentMethod"></span></p>
+                </div>
+                
+                <div class="order-summary">
+                    <h3><i class="fas fa-shopping-cart"></i> Order Summary</h3>
+                    <div id="orderItems"></div>
+                    <div class="order-total">
+                        <strong>Total Amount:</strong> $<span id="totalAmount"></span>
+                    </div>
+                </div>
+
+                <button onclick="startNewOrder()" class="btn btn-primary">
+                    <i class="fas fa-shopping-cart"></i> Start New Order
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AWE Electronics Store</p>
+    </footer>
+
+    <script>
+        // Get order data from localStorage
+        const data = JSON.parse(localStorage.getItem("checkoutInfo") || "{}");
+        const orderCartData = JSON.parse(localStorage.getItem("orderCartData") || "{}");
+
+        // Set order details
+        document.getElementById("orderId").textContent = "AWE-" + Date.now();
+        document.getElementById("name").textContent = data?.name || "N/A";
+        document.getElementById("address").textContent = data?.address || "N/A";
+        document.getElementById("email").textContent = data?.email || "N/A";
+        document.getElementById("paymentMethod").textContent = data?.paymentMethod || "N/A";
+        document.getElementById("orderStatus").textContent = "Confirmed";
+        document.getElementById("totalAmount").textContent = orderCartData?.total?.toFixed(2) || "0.00";
+
+        // Display order items
+        const orderItemsContainer = document.getElementById("orderItems");
+        if (orderCartData?.items && orderCartData.items.length > 0) {
+            const itemsList = document.createElement("ul");
+            itemsList.className = "order-items-list";
+            
+            orderCartData.items.forEach(item => {
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `
+                    <div class="item-details">
+                        <span class="item-name">${item.name}</span>
+                        <span class="item-quantity">x${item.quantity}</span>
+                    </div>
+                    <div class="item-price-details">
+                        <span class="item-unit-price">$${item.price.toFixed(2)} each</span>
+                        <span class="item-total">$${item.total.toFixed(2)}</span>
+                    </div>
+                `;
+                itemsList.appendChild(listItem);
+            });
+            
+            orderItemsContainer.appendChild(itemsList);
+        } else {
+            orderItemsContainer.innerHTML = "<p class='no-items'>No items in order</p>";
+        }
+
+        function startNewOrder() {
+            // Clear only the cart and checkout data, keep other data if needed
+            localStorage.removeItem("cartData");
+            localStorage.removeItem("checkoutInfo");
+            localStorage.removeItem("orderCartData");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

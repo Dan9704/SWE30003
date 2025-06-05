@@ -16,6 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const confShipmentTracking = document.getElementById('conf-shipment-tracking');
     const newOrderButton = document.getElementById('new-order-button');
 
+
+    const checkoutView = document.getElementById('checkout-view');
+    const checkoutForm = document.getElementById('checkout-form');
+    const shippingAddressInput = document.getElementById('shipping-address');
+    const paymentMethodInput = document.getElementById('payment-method');
+    const cancelCheckoutButton = document.getElementById('cancel-checkout');
+
+
+
+
     // Admin view elements
     const showAdminLoginLink = document.getElementById('show-admin-login-link');
     const adminLoginView = document.getElementById('admin-login-view');

@@ -49,7 +49,7 @@
             </div>
             <div id="cart-summary">
                 <h3>Cart Total: $<span id="cart-total">0.00</span></h3>
-                <button id="checkout-button" class="btn btn-primary" disabled>Proceed to Checkout</button>
+                <button  id="checkout-button" class="btn btn-primary" disabled onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
             </div>
         </section>
         
@@ -82,6 +82,30 @@
             <button id="new-order-button" class="btn">Start New Order</button>
         </section>
     </main>
+
+    <div id="checkout-view" class="hidden">
+  <h3>Checkout</h3>
+  <form id="checkout-form">
+    <label>
+      Shipping Address:<br />
+      <input type="text" id="shipping-address" required />
+    </label><br /><br />
+    
+    <label>
+      Payment Method:<br />
+      <select id="payment-method" required>
+        <option value="">Select</option>
+        <option value="credit">Credit Card</option>
+        <option value="paypal">PayPal</option>
+        <option value="bank">Bank Transfer</option>
+      </select>
+    </label><br /><br />
+
+    <button type="submit" class="btn btn-primary">Place Order</button>
+    <button type="button" id="cancel-checkout" class="btn">Cancel</button>
+  </form>
+</div>
+
 
     <footer>
         <p>&copy; 2024 AWE Electronics Store</p>
