@@ -10,7 +10,7 @@
     "id": "p002",
     "name": "Gaming Mouse",
     "price": 29.99,
-    "stock": 30,
+    "stock": 0,
     "category": "Accessories"
   },
   {
@@ -38,7 +38,7 @@
     "id": "p006",
     "name": "Mechanical Keyboard",
     "price": 24.99,
-    "stock": 40,
+    "stock": 0,
     "category": "Accessories"
   },
   {
